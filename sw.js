@@ -1,12 +1,13 @@
 const CACHE_NAME = 'study-calendar-v1';
 const urlsToCache = [
-    '/',
-    '/styles.css',
-    '/script.js',
-    '/manifest.json',
-    '/icon-192.png',
-    '/icon-512.png'
+    '/School_Calendar/',
+    '/School_Calendar/styles.css',
+    '/School_Calendar/script.js',
+    '/School_Calendar/manifest.json',
+    '/School_Calendar/icon-192.png',
+    '/School_Calendar/icon-512.png'
 ];
+
 
 self.addEventListener('install', (event) => {
     event.waitUntil(
