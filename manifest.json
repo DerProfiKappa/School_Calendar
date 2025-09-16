@@ -2,7 +2,7 @@
     "name": "Study Calendar",
     "short_name": "StudyCal",
     "description": "A beautiful calendar app for tracking homework and exams",
-    "start_url": "/",
+    "start_url": "/School_Calendar/",
     "display": "standalone",
     "background_color": "#667eea",
     "theme_color": "#007aff",
