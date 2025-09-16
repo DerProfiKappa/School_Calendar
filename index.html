@@ -1,67 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="StudyCalendar">
-    <title>Study Calendar</title>
-    <link rel="manifest" href="manifest.json">
-    <link rel="apple-touch-icon" href="icon-192.png">
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1.0">
+  <title>Study Calendar</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <div class="container">
-        <header class="header">
-            <h1 class="title">Study Calendar</h1>
-            <button class="add-btn" id="addBtn">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                </svg>
-            </button>
-        </header>
-
-        <div class="calendar-container">
-            <div class="calendar-header">
-                <button class="nav-btn" id="prevBtn">‹</button>
-                <h2 class="month-year" id="monthYear"></h2>
-                <button class="nav-btn" id="nextBtn">›</button>
-            </div>
-            
-            <div class="calendar-grid" id="calendarGrid"></div>
+  <div class="container">
+    <header class="header">
+      <span class="title">Study Calendar</span>
+      <div class="theme-controls">
+        <label for="themeSelect">Theme:</label>
+        <select id="themeSelect">
+          <option value="system">System</option>
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+          <option value="custom">Custom</option>
+        </select>
+        <input id="accentColor" type="color" value="#007aff" title="Pick accent color" style="display:none;">
+      </div>
+      <button class="add-btn" id="addBtn" aria-label="Add Event">＋</button>
+    </header>
+    <main>
+      <section class="calendar-container">
+        <div class="calendar-header">
+          <button class="nav-btn" id="prevBtn" aria-label="Previous Month">&lt;</button>
+          <span class="month-year" id="monthYear"></span>
+          <button class="nav-btn" id="nextBtn" aria-label="Next Month">&gt;</button>
         </div>
-
-        <div class="upcoming-section">
-            <h3>Upcoming</h3>
-            <div class="upcoming-list" id="upcomingList"></div>
+        <div class="calendar-scroll" id="calendarScroll">
+          <div class="calendar-grid" id="calendarGrid"></div>
         </div>
-    </div>
+      </section>
+      <section class="upcoming-section">
+        <h3>Upcoming Events</h3>
+        <div id="upcomingList"></div>
+      </section>
+    </main>
 
     <!-- Modal -->
     <div class="modal" id="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 id="modalTitle">Add Event</h3>
-                <button class="close-btn" id="closeBtn">×</button>
-            </div>
-            <form class="modal-form" id="eventForm">
-                <input type="text" id="eventTitle" placeholder="Title" required>
-                <select id="eventType">
-                    <option value="homework">Homework</option>
-                    <option value="exam">Exam</option>
-                </select>
-                <input type="date" id="eventDate" required>
-                <input type="time" id="eventTime" value="09:00">
-                <textarea id="eventNotes" placeholder="Notes (optional)" rows="3"></textarea>
-                <div class="form-actions">
-                    <button type="button" class="btn-secondary" id="cancelBtn">Cancel</button>
-                    <button type="submit" class="btn-primary">Save</button>
-                </div>
-            </form>
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Add/Edit Event</h3>
+          <button id="closeBtn" class="close-btn" aria-label="Close">&times;</button>
         </div>
+        <form id="eventForm" class="modal-form">
+          <input type="text" id="eventTitle" placeholder="Title" required autocomplete="off" />
+          <select id="eventType" required>
+            <option value="homework">Homework</option>
+            <option value="exam">Exam</option>
+            <option value="activity">Activity</option>
+          </select>
+          <input type="date" id="eventDate" required />
+          <input type="time" id="eventTime" required />
+          <textarea id="eventNotes" placeholder="Notes"></textarea>
+          <div class="form-actions">
+            <button class="btn-secondary" id="cancelBtn" type="button">Cancel</button>
+            <button class="btn-primary" type="submit">Save</button>
+          </div>
+        </form>
+      </div>
     </div>
-
-    <script src="script.js"></script>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
